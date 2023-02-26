@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search> 
+  
+  
+    
+    <entry>
+      <title></title>
+      <link href="/2023/02/26/%E8%AF%AD%E8%AE%B0%E5%BD%95/"/>
+      <url>/2023/02/26/%E8%AF%AD%E8%AE%B0%E5%BD%95/</url>
+      
+        <content type="html"><![CDATA[<h1 id="语记录"><a href="#语记录" class="headerlink" title="语记录"></a>语记录</h1><blockquote><p>当理想与现实相悖之时，人应该如何面对？每个人都为了知晓正确的生存方式而不懈战斗。为什么而战?该如何活下去？没有人会告诉你答案。我们拥有的只不过是迷惘，就像满身泥泞的迷途野犬。          ——《文豪野犬》</p></blockquote>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>《计算机系统课程笔记by lyt》</title>
+      <link href="/2023/02/25/%E3%80%8A%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0by-lyt%E3%80%8B/"/>
+      <url>/2023/02/25/%E3%80%8A%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0by-lyt%E3%80%8B/</url>
+      
+        <content type="html"><![CDATA[<hr><h3 id="1-3-Hello-World的诞生"><a href="#1-3-Hello-World的诞生" class="headerlink" title="1.3 Hello World的诞生"></a>1.3 Hello World的诞生</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span>&#123;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;Hello World&quot;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p><img src="/2023/02/25/%E3%80%8A%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0by-lyt%E3%80%8B/1.png" alt></p><p>经历过程：</p><ol><li>预处理&gt; gcc -E hello.c -o hello.i</li><li>编译&gt; gcc -S hello.i -o hello.s</li><li>汇编&gt; gcc -c hello.s -o hello.o</li><li>链接&gt; gcc hello.o -o hello.out</li></ol><h3 id="2-1-汇编初步"><a href="#2-1-汇编初步" class="headerlink" title="2.1 汇编初步"></a>2.1 汇编初步</h3><p>1005.s 简单的汇编代码文件</p><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">.section .text    </span><br><span class="line">  </span><br><span class="line">.global _start   </span><br><span class="line">_start:      </span><br><span class="line">    nop</span><br><span class="line">    movl $<span class="number">4</span>, %eax  </span><br><span class="line">    movl $<span class="number">1</span>, %ebx  </span><br><span class="line">    movl $<span class="number">5</span>, %ecx  </span><br><span class="line">    movl $<span class="number">13</span>, %edx  </span><br><span class="line">    movl %eax,%ebx</span><br><span class="line">   </span><br><span class="line">  </span><br><span class="line">    movl $<span class="number">1</span>, %eax  </span><br><span class="line">    <span class="type">int</span> $<span class="number">0x80</span>  </span><br></pre></td></tr></table></figure><p>汇编代码-&gt;.o对象文件</p><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">as <span class="number">1005.</span>s -o <span class="number">1005.</span>o</span><br></pre></td></tr></table></figure><p>将.o对象文件链接为可执行文件</p><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ld <span class="number">1005.</span>o -o <span class="number">1005</span></span><br></pre></td></tr></table></figure><p><font color="red">进行调试!gdb</font>：</p><hr><h3 id="附录"><a href="#附录" class="headerlink" title="附录"></a>附录</h3>]]></content>
+      
+      
+      <categories>
+          
+          <category> LYT_Notes </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 计算机系统 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+  
+  
+</search>
