@@ -1,0 +1,291 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>StrangeInterviewQuestion | /0Solving1/</title><meta name="author" content="LYT"><meta name="copyright" content="LYT"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="实现一个随机算法，要求每次返回1-100中的一个数，每次都不重复，每个数返回的几率均等，并且每次只能使用一次random函数。这是一个非常好的面试题。以下是我的解答： 实现思路：  初始化一个大小为100的数组，用于存储1-100的数字。 使用Fisher-Yates洗牌算法对数组进行随机打乱。该算法能够保证每个数字被等概率地放置在任意位置。 维护一个指针，初始指向数组的第一个元素。每次调用函数时">
+<meta property="og:type" content="article">
+<meta property="og:title" content="StrangeInterviewQuestion">
+<meta property="og:url" content="https://0solving1.cn/2024/11/29/StrangeInterviewQuestion%E5%A5%87%E6%80%AA%E9%9D%A2%E8%AF%95%E9%A2%98/index.html">
+<meta property="og:site_name" content="&#x2F;0Solving1&#x2F;">
+<meta property="og:description" content="实现一个随机算法，要求每次返回1-100中的一个数，每次都不重复，每个数返回的几率均等，并且每次只能使用一次random函数。这是一个非常好的面试题。以下是我的解答： 实现思路：  初始化一个大小为100的数组，用于存储1-100的数字。 使用Fisher-Yates洗牌算法对数组进行随机打乱。该算法能够保证每个数字被等概率地放置在任意位置。 维护一个指针，初始指向数组的第一个元素。每次调用函数时">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://s2.loli.net/2024/11/25/Mq4PjTgDrbn9vws.jpg">
+<meta property="article:published_time" content="2024-11-29T05:06:33.000Z">
+<meta property="article:modified_time" content="2024-11-29T05:51:49.499Z">
+<meta property="article:author" content="LYT">
+<meta property="article:tag" content="Algorithm">
+<meta property="article:tag" content="DataStruct">
+<meta property="article:tag" content="Java">
+<meta property="article:tag" content="Back-end-development">
+<meta property="article:tag" content="InterviewQuestion">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://s2.loli.net/2024/11/25/Mq4PjTgDrbn9vws.jpg"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://0solving1.cn/2024/11/29/StrangeInterviewQuestion%E5%A5%87%E6%80%AA%E9%9D%A2%E8%AF%95%E9%A2%98/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.css" media="print" onload="this.media='all'"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":false},
+  copy: {
+    success: '复制成功',
+    error: '复制失败',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'null',
+  Snackbar: {"chs_to_cht":"已切换为繁体中文","cht_to_chs":"已切换为简体中文","day_to_night":"已切换为深色模式","night_to_day":"已切换为浅色模式","bgLight":"#49b1f5","bgDark":"#1f1f1f","position":"bottom-left"},
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: true,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'StrangeInterviewQuestion',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  isShuoshuo: false
+}</script><meta name="generator" content="Hexo 7.3.0"></head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="iron-container iron-circle"><div class="iron-box1 iron-circle iron-center"></div><div class="iron-box2 iron-circle iron-center"></div><div class="iron-box3 iron-circle iron-center"></div><div class="iron-box4 iron-circle iron-center"></div><div class="iron-box5 iron-circle iron-center"></div><div class="iron-box6 iron-circle"><div class="iron-coil" style="--i: 0"></div><div class="iron-coil" style="--i: 1"></div><div class="iron-coil" style="--i: 2"></div><div class="iron-coil" style="--i: 3"></div><div class="iron-coil" style="--i: 4"></div><div class="iron-coil" style="--i: 5"></div><div class="iron-coil" style="--i: 6"></div><div class="iron-coil" style="--i: 7"></div></div></div></div><script>(()=>{
+  const $loadingBox = document.getElementById('loading-box')
+  const $body = document.body
+  const preloader = {
+    endLoading: () => {
+      $body.style.overflow = ''
+      $loadingBox.classList.add('loaded')
+    },
+    initLoading: () => {
+      $body.style.overflow = 'hidden'
+      $loadingBox.classList.remove('loaded')
+    }
+  }
+
+  preloader.initLoading()
+  window.addEventListener('load', preloader.endLoading)
+
+  if (false) {
+    btf.addGlobalFn('pjaxSend', preloader.initLoading, 'preloader_init')
+    btf.addGlobalFn('pjaxComplete', preloader.endLoading, 'preloader_end')
+  }
+})()</script><div id="web_bg" style="background-image: url(/img/baiyingcheng.jpg);"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="/img/header.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">8</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">11</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">4</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url(https://s2.loli.net/2024/11/25/wTHFUo8B4IqvzL2.jpg);"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">/0Solving1/</span></a><a class="nav-page-title" href="/"><span class="site-name">StrangeInterviewQuestion</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="post-info"><h1 class="post-title">StrangeInterviewQuestion</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2024-11-29T05:06:33.000Z" title="发表于 2024-11-29 13:06:33">2024-11-29</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2024-11-29T05:51:49.499Z" title="更新于 2024-11-29 13:51:49">2024-11-29</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/InterviewQuestion/">InterviewQuestion</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">总字数:</span><span class="word-count">574</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>2分钟</span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><h3 id="实现一个随机算法，要求每次返回1-100中的一个数，每次都不重复，每个数返回的几率均等，并且每次只能使用一次random函数。"><a href="#实现一个随机算法，要求每次返回1-100中的一个数，每次都不重复，每个数返回的几率均等，并且每次只能使用一次random函数。" class="headerlink" title="实现一个随机算法，要求每次返回1-100中的一个数，每次都不重复，每个数返回的几率均等，并且每次只能使用一次random函数。"></a>实现一个随机算法，要求每次返回1-100中的一个数，每次都不重复，每个数返回的几率均等，并且每次只能使用一次random函数。</h3><p>这是一个非常好的面试题。以下是我的解答：</p>
+<p>实现思路：</p>
+<ol>
+<li>初始化一个大小为100的数组，用于存储1-100的数字。</li>
+<li>使用Fisher-Yates洗牌算法对数组进行随机打乱。该算法能够保证每个数字被等概率地放置在任意位置。</li>
+<li>维护一个指针，初始指向数组的第一个元素。每次调用函数时，返回指针所指的元素，并将指针向后移动一位。</li>
+<li>当指针移动到数组末尾时，重新对数组进行洗牌，并将指针重置为数组起始位置。</li>
+</ol>
+<p>具体实现代码：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;random&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;algorithm&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">RandomNumber</span> &#123;</span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    std::vector&lt;<span class="type">int</span>&gt; numbers;</span><br><span class="line">    <span class="type">int</span> index;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="built_in">RandomNumber</span>() &#123;</span><br><span class="line">        numbers.<span class="built_in">resize</span>(<span class="number">100</span>);</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; <span class="number">100</span>; i++) &#123;</span><br><span class="line">            numbers[i] = i + <span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">shuffle</span>();</span><br><span class="line">        index = <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">shuffle</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="type">static</span> std::random_device rd;</span><br><span class="line">        <span class="function"><span class="type">static</span> std::mt19937 <span class="title">g</span><span class="params">(rd())</span></span>;</span><br><span class="line">        std::<span class="built_in">shuffle</span>(numbers.<span class="built_in">begin</span>(), numbers.<span class="built_in">end</span>(), g);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">next</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (index == <span class="number">100</span>) &#123;</span><br><span class="line">            <span class="built_in">shuffle</span>();</span><br><span class="line">            index = <span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> numbers[index++];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    RandomNumber rn;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; <span class="number">200</span>; i++) &#123;</span><br><span class="line">        std::cout &lt;&lt; rn.<span class="built_in">next</span>() &lt;&lt; <span class="string">&quot; &quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    std::cout &lt;&lt; std::endl;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>代码说明：</p>
+<ol>
+<li>使用<code>std::vector&lt;int&gt;</code>存储1-100的数字。</li>
+<li>在构造函数中初始化数组，并调用<code>shuffle()</code>函数对数组进行第一次洗牌。</li>
+<li><code>shuffle()</code>函数使用<code>std::random_device</code>和<code>std::mt19937</code>生成随机数引擎，并调用<code>std::shuffle()</code>函数对数组进行随机打乱。</li>
+<li><code>next()</code>函数每次调用时返回<code>index</code>指针所指的元素，并将<code>index</code>加1。当<code>index</code>达到100时，重新调用<code>shuffle()</code>函数对数组洗牌，并将<code>index</code>重置为0。</li>
+</ol>
+<p>这样实现的随机算法可以保证：</p>
+<ol>
+<li>每次返回的数字都在1-100之间，且不重复。</li>
+<li>每个数字返回的概率相等。</li>
+<li>每次只调用一次<code>std::shuffle()</code>函数，满足题目要求。</li>
+</ol>
+<p>算法的时间复杂度为O(1)，空间复杂度为O(100)，是一个非常高效的实现。</p>
+<p>希望这个解答对你有所帮助。如果还有任何问题，欢迎随时提出。</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://0solving1.cn">LYT</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="https://0solving1.cn/2024/11/29/StrangeInterviewQuestion%E5%A5%87%E6%80%AA%E9%9D%A2%E8%AF%95%E9%A2%98/">https://0solving1.cn/2024/11/29/StrangeInterviewQuestion%E5%A5%87%E6%80%AA%E9%9D%A2%E8%AF%95%E9%A2%98/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来源 <a href="https://0solving1.cn" target="_blank">/0Solving1/</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/Algorithm/">Algorithm</a><a class="post-meta__tags" href="/tags/DataStruct/">DataStruct</a><a class="post-meta__tags" href="/tags/Java/">Java</a><a class="post-meta__tags" href="/tags/Back-end-development/">Back-end-development</a><a class="post-meta__tags" href="/tags/InterviewQuestion/">InterviewQuestion</a></div><div class="post-share"><div class="social-share" data-image="https://s2.loli.net/2024/11/25/Mq4PjTgDrbn9vws.jpg" data-sites="wechat,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><a class="pagination-related" href="/2024/11/29/SomeInterviewsThinking/" title="SomeInterviewsThinking"><img class="cover" src="https://s2.loli.net/2024/11/25/Mq4PjTgDrbn9vws.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="info"><div class="info-1"><div class="info-item-1">上一篇</div><div class="info-item-2">SomeInterviewsThinking</div></div><div class="info-2"><div class="info-item-1">千万级系统，每天有大约1万个用户登录，如何进行性能优化？针对千万级系统每天约1万用户登录的性能优化,可以从以下几个方面着手:  使用分布式架构,将系统拆分成多个服务,提高并发处理能力  采用缓存技术如Redis,减少数据库查询压力  优化数据库索引,SQL查询等,提高查询效率   异步处理耗时任务,快速响应请求  增加服务器数量,负载均衡分担压力  对热点数据进行缓存预热,降低响应时间  对代码进行性能分析优化,找出瓶颈  限流、降级等措施应对流量高峰  监控系统性能指标,及时发现和处理问题  定期进行压力测试,评估系统承载能力   关键是分析系统瓶颈,有针对性地优化,同时构建高可用架构,以应对高并发场景。持续的监控和优化也很重要。  spring cloud与sprint boot的区别Spring Boot是用于快速构建独立的、生产级的Spring应用程序的框架。它提供了自动配置、嵌入式服务器等便利功能。 Spring Cloud是基于Spring Boot的微服务框架。它提供了服务发现、配置管理、断路器、智能路由等一系列用于构建分布式系统的工具。 总的来说,Spring...</div></div></div></a><a class="pagination-related" href="/2024/11/29/SortAlgorithm%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/" title="SortAlgorithm排序算法"><img class="cover" src="https://s2.loli.net/2024/11/25/Mq4PjTgDrbn9vws.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="info text-right"><div class="info-1"><div class="info-item-1">下一篇</div><div class="info-item-2">SortAlgorithm排序算法</div></div><div class="info-2"><div class="info-item-1">十大经典排序算法介绍与实现(Java/C++)引言排序算法是计算机科学与工程中最基础也最重要的算法之一。一个优秀的程序员必须深刻理解各种排序算法的原理、实现、优劣与应用场景。本文将详细介绍十种经典排序算法,并给出Java与C++的代码实现,旨在为读者全面梳理排序算法,夯实算法基本功。 1. 冒泡排序(Bubble Sort)1.1 算法原理冒泡排序重复遍历要排序的数列,每次比较两个元素,如果顺序错误就把它们交换过来。遍历数列的工作重复地进行,直到没有再需要交换,也就是说该数列已经排序完成。 1.2 Java实现123456789101112public void bubbleSort(int[] arr) &#123;    int n = arr.length;    for (int i = 0; i &lt; n-1; i++) &#123;        for (int j = 0; j &lt; n-i-1; j++) &#123;            if (arr[j] &gt; arr[j+1]) &#123;                int temp...</div></div></div></a></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><a class="pagination-related" href="/2024/11/29/Cplus-toJava-For-algorithmPractice/" title="C++toJava,For algorithmPractice"><img class="cover" src="https://s2.loli.net/2024/11/25/Mq4PjTgDrbn9vws.jpg" alt="cover"><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2024-11-29</div><div class="info-item-2">C++toJava,For algorithmPractice</div></div><div class="info-2"><div class="info-item-1">C++刷题者快速入门Java指南引言本文旨在帮助有C++刷题经验的程序员快速适应Java编程环境,尤其是在Leetcode等算法编程网站上从事题目练习。文章将对比C++和Java在基本语法、数据结构实现等方面的异同,帮助读者尽快掌握Java刷题技巧。 基本语法对比变量声明 C++可以使用auto关键字进行类型推导,而Java需要显式声明变量类型。 Java变量声明时可以直接初始化,如int x = 1;C++须分开声明与定义。  输入输出 C++使用cin/cout进行标准输入输出,Java则使用System.in/System.out。 Java输入输出操作需要显式抛出异常,而C++无此要求。  字符串 Java内置String类,C++使用string。 Java字符串不可变,C++字符串可变。 Java字符串重载+运算符以实现拼接,C++需调用成员函数。  常见数据结构实现对比Vector / ArrayList C++: #include &lt;vector&gt; Java: import...</div></div></div></a><a class="pagination-related" href="/2024/11/29/SomeInterviewsThinking/" title="SomeInterviewsThinking"><img class="cover" src="https://s2.loli.net/2024/11/25/Mq4PjTgDrbn9vws.jpg" alt="cover"><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2024-11-29</div><div class="info-item-2">SomeInterviewsThinking</div></div><div class="info-2"><div class="info-item-1">千万级系统，每天有大约1万个用户登录，如何进行性能优化？针对千万级系统每天约1万用户登录的性能优化,可以从以下几个方面着手:  使用分布式架构,将系统拆分成多个服务,提高并发处理能力  采用缓存技术如Redis,减少数据库查询压力  优化数据库索引,SQL查询等,提高查询效率   异步处理耗时任务,快速响应请求  增加服务器数量,负载均衡分担压力  对热点数据进行缓存预热,降低响应时间  对代码进行性能分析优化,找出瓶颈  限流、降级等措施应对流量高峰  监控系统性能指标,及时发现和处理问题  定期进行压力测试,评估系统承载能力   关键是分析系统瓶颈,有针对性地优化,同时构建高可用架构,以应对高并发场景。持续的监控和优化也很重要。  spring cloud与sprint boot的区别Spring Boot是用于快速构建独立的、生产级的Spring应用程序的框架。它提供了自动配置、嵌入式服务器等便利功能。 Spring Cloud是基于Spring Boot的微服务框架。它提供了服务发现、配置管理、断路器、智能路由等一系列用于构建分布式系统的工具。 总的来说,Spring...</div></div></div></a><a class="pagination-related" href="/2024/11/29/SortAlgorithm%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/" title="SortAlgorithm排序算法"><img class="cover" src="https://s2.loli.net/2024/11/25/Mq4PjTgDrbn9vws.jpg" alt="cover"><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2024-11-29</div><div class="info-item-2">SortAlgorithm排序算法</div></div><div class="info-2"><div class="info-item-1">十大经典排序算法介绍与实现(Java/C++)引言排序算法是计算机科学与工程中最基础也最重要的算法之一。一个优秀的程序员必须深刻理解各种排序算法的原理、实现、优劣与应用场景。本文将详细介绍十种经典排序算法,并给出Java与C++的代码实现,旨在为读者全面梳理排序算法,夯实算法基本功。 1. 冒泡排序(Bubble Sort)1.1 算法原理冒泡排序重复遍历要排序的数列,每次比较两个元素,如果顺序错误就把它们交换过来。遍历数列的工作重复地进行,直到没有再需要交换,也就是说该数列已经排序完成。 1.2 Java实现123456789101112public void bubbleSort(int[] arr) &#123;    int n = arr.length;    for (int i = 0; i &lt; n-1; i++) &#123;        for (int j = 0; j &lt; n-i-1; j++) &#123;            if (arr[j] &gt; arr[j+1]) &#123;                int temp...</div></div></div></a><a class="pagination-related" href="/2024/11/27/%E5%8D%95%E8%B0%83%E6%A0%88-MonotoneStack/" title="单调栈-MonotoneStack"><img class="cover" src="https://s2.loli.net/2024/11/25/Mq4PjTgDrbn9vws.jpg" alt="cover"><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2024-11-27</div><div class="info-item-2">单调栈-MonotoneStack</div></div><div class="info-2"><div class="info-item-1">单调栈引用链接： LeetCode算法通关手册-单调栈 Oi-wiki-单调栈 单调栈是一种数据结构，通常用于解决某些与数组或序列中的顺序相关的问题。它主要用于保持一个栈中的元素以单调递增或单调递减的顺序，因此被称为“单调栈”。单调栈特别适合解决需要在一个数组中寻找与每个元素有关的下一个更大（或更小）元素的问题，典型例子包括 “下一个更大元素”、”下一个更小元素” 等。  何为单调栈？顾名思义，单调栈即满足单调性的栈结构。与单调队列相比，其只在一端进行进出。 为了描述方便，以下举例及伪代码以维护一个整数的单调递增栈为例。  过程 插入 将一个元素插入单调栈时，为了维护栈的单调性，需要在保证将该元素插入到栈顶后整个栈满足单调性的前提下弹出最少的元素。 例如，栈中自顶向下的元素为 。  插入元素  时为了保证单调性需要依次弹出元素 ，操作后栈变为 。  用伪代码描述如下： 1234insert xwhile !sta.empty() &amp;&amp; sta.top()&lt;x   ...</div></div></div></a></div></div></div><div class="aside-content" id="aside-content"><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AA%E9%9A%8F%E6%9C%BA%E7%AE%97%E6%B3%95%EF%BC%8C%E8%A6%81%E6%B1%82%E6%AF%8F%E6%AC%A1%E8%BF%94%E5%9B%9E1-100%E4%B8%AD%E7%9A%84%E4%B8%80%E4%B8%AA%E6%95%B0%EF%BC%8C%E6%AF%8F%E6%AC%A1%E9%83%BD%E4%B8%8D%E9%87%8D%E5%A4%8D%EF%BC%8C%E6%AF%8F%E4%B8%AA%E6%95%B0%E8%BF%94%E5%9B%9E%E7%9A%84%E5%87%A0%E7%8E%87%E5%9D%87%E7%AD%89%EF%BC%8C%E5%B9%B6%E4%B8%94%E6%AF%8F%E6%AC%A1%E5%8F%AA%E8%83%BD%E4%BD%BF%E7%94%A8%E4%B8%80%E6%AC%A1random%E5%87%BD%E6%95%B0%E3%80%82"><span class="toc-text">实现一个随机算法，要求每次返回1-100中的一个数，每次都不重复，每个数返回的几率均等，并且每次只能使用一次random函数。</span></a></li></ol></div></div></div></div></main><footer id="footer" style="background-image: url(https://s2.loli.net/2024/11/25/wTHFUo8B4IqvzL2.jpg);"><div id="footer-wrap"><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div class="icp-info"><br/><img src="https://s2.loli.net/2024/12/04/gC27Mc8uHTIlqWS.png" alt="备案图标"/><a href="http://www.beian.miit.gov.cn/" style="color:#f72b07" target="_blank">湘ICP备2024094835号</a></div><div class="footer_custom_text">To Make Pendulum-Summon Great Again.</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page/instantpage.min.js" type="module"></script><script src="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.js"></script><div class="js-pjax"><script>(() => {
+  const loadMathjax = () => {
+    if (!window.MathJax) {
+      window.MathJax = {
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']],
+          tags: 'none',
+        },
+        chtml: {
+          scale: 1.1
+        },
+        options: {
+          enableMenu: true,
+          renderActions: {
+            findScript: [10, doc => {
+              for (const node of document.querySelectorAll('script[type^="math/tex"]')) {
+                const display = !!node.type.match(/; *mode=display/)
+                const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display)
+                const text = document.createTextNode('')
+                node.parentNode.replaceChild(text, node)
+                math.start = {node: text, delim: '', n: 0}
+                math.end = {node: text, delim: '', n: 0}
+                doc.math.push(math)
+              }
+            }, '']
+          }
+        }
+      }
+      
+      const script = document.createElement('script')
+      script.src = 'https://cdn.jsdelivr.net/npm/mathjax/es5/tex-mml-chtml.min.js'
+      script.id = 'MathJax-script'
+      script.async = true
+      document.head.appendChild(script)
+    } else {
+      MathJax.startup.document.state(0)
+      MathJax.texReset()
+      MathJax.typesetPromise()
+    }
+  }
+
+  btf.addGlobalFn('encrypt', loadMathjax, 'mathjax')
+  window.pjax ? loadMathjax() : window.addEventListener('load', loadMathjax)
+})()</script><script>(() => {
+  const runMermaid = ele => {
+    window.loadMermaid = true
+    const theme = document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'default'
+
+    ele.forEach((item, index) => {
+      const mermaidSrc = item.firstElementChild
+      const mermaidThemeConfig = `%%{init:{ 'theme':'${theme}'}}%%\n`
+      const mermaidID = `mermaid-${index}`
+      const mermaidDefinition = mermaidThemeConfig + mermaidSrc.textContent
+
+      const renderFn = mermaid.render(mermaidID, mermaidDefinition)
+      const renderMermaid = svg => {
+        mermaidSrc.insertAdjacentHTML('afterend', svg)
+      }
+
+      // mermaid v9 and v10 compatibility
+      typeof renderFn === 'string' ? renderMermaid(renderFn) : renderFn.then(({ svg }) => renderMermaid(svg))
+    })
+  }
+
+  const codeToMermaid = () => {
+    const codeMermaidEle = document.querySelectorAll('pre > code.mermaid')
+    if (codeMermaidEle.length === 0) return
+
+    codeMermaidEle.forEach(ele => {
+      const preEle = document.createElement('pre')
+      preEle.className = 'mermaid-src'
+      preEle.hidden = true
+      preEle.textContent = ele.textContent
+      const newEle = document.createElement('div')
+      newEle.className = 'mermaid-wrap'
+      newEle.appendChild(preEle)
+      ele.parentNode.replaceWith(newEle)
+    })
+  }
+
+  const loadMermaid = () => {
+    if (false) codeToMermaid()
+    const $mermaid = document.querySelectorAll('#article-container .mermaid-wrap')
+    if ($mermaid.length === 0) return
+
+    const runMermaidFn = () => runMermaid($mermaid)
+    btf.addGlobalFn('themeChange', runMermaidFn, 'mermaid')
+    window.loadMermaid ? runMermaidFn() : btf.getScript('https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js').then(runMermaidFn)
+  }
+
+  btf.addGlobalFn('encrypt', loadMermaid, 'mermaid')
+  window.pjax ? loadMermaid() : document.addEventListener('DOMContentLoaded', loadMermaid)
+})()</script></div><script id="canvas_nest" defer="defer" color="0,0,255" opacity="0.7" zIndex="-1" count="99" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/canvas-nest.min.js"></script></div></body></html>
